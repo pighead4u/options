@@ -36,7 +36,6 @@ type OptionVO struct {
  * 数据库对应的表
  **/
 type Content struct {
-	gorm.Model
 	Ranking         string `json:"ranking"`
 	Company         string `json:"company"`
 	Volumn          string `json:"volumn"`
@@ -56,4 +55,17 @@ func (po *Content) Query() {
 
 func CloseDB() {
 	db.Close()
+}
+
+func (po Content) translate() ContentVO {
+	var vo ContentVO
+	vo.Ranking = po.Ranking
+	vo.Contract = po.ContractCode
+	vo.TransactionType = po.TransactionType
+	vo.Change = po.Change
+	vo.Volumn = po.Volumn
+	vo.Company = po.Company
+	vo.Date = po.TransactionDate
+
+	return vo
 }
