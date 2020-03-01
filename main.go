@@ -9,5 +9,5 @@ func main() {
 	router := gin.Default()
 	router.GET("/title/:bourse", api.GetTitlesByBourse)
 	router.GET("/content/:contract", api.GetContentsByContractAndDate)
-	router.Run()
+	router.Run(":9898")
 }
